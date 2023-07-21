@@ -1,0 +1,15 @@
+---
+trigger:
+  - master
+pool: "Default"
+stages:
+  - stage: stage1
+    displayName: firststage
+    jobs:
+      - job: buildcode
+        displayName: codebuild
+        steps:
+          - task: maven@4
+            inputs:
+              mavenPOMFile: 'pom.xml'
+              goal: 'package'
